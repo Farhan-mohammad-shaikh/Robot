@@ -7,8 +7,15 @@ BUILD_DIR             =  build
 OBJ_DIR               = $(BUILD_DIR)/obj
 BIN_DIR               = $(BUILD_DIR)/bin
 
+LIB_DIRS = $(MSP_INCLUDE_DIRECTORY)
+INCLUDE_DIR = $(MSP_INCLUDE_DIRECTORY)\
+              ./src \
+              ./external/ \
+              ./external/printf
+
 #Toolchain
 CC   =  $(MSP_BIN_DIRECTORY)/msp430-elf-gcc
+RM   = rm
 
 #Files
 TARGET = $(BIN_DIR)/blink
