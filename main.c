@@ -1,5 +1,7 @@
 #include <msp430.h>
 #include "led.h"
+#include "drive.h"
+#include "i2c.h"
 
 int main(void)
 {   
@@ -7,6 +9,8 @@ int main(void)
     
     WDTCTL = WDTPW | WDTHOLD;
     led_init();
+    drive_init();
+    i2c_init();
 
     while (1)
     {
