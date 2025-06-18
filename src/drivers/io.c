@@ -55,6 +55,14 @@ static volatile uint8_t *const port_sel2_regs[IO_PORT_CNT] = { &P1SEL2, &P2SEL2,
 // static volatile uint8_t *const port_interrupt_edge_select_regs[IO_INTERRUPT_PORT_CNT] = { &P1IES,
 //                                                                                           &P2IES };
 
+void io_configure(io_e io, const struct io_config *config)
+{
+    io_set_select(io, config->select);
+    io_set_direction(io, config->dir);
+    io_set_out(io, config->out);
+    io_set_resistor(io, config->resistor);
+}
+
 
 void io_set_select(io_e io, io_select_e select)
 {

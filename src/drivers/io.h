@@ -92,9 +92,16 @@ typedef enum
     IO_IN_HIGH,
 } io_in_e;
 
+struct io_config
+{
+    io_select_e select;
+    io_resistor_e resistor;
+    io_dir_e dir;
+    io_out_e out;
+};
 
 
-
+void io_configure(io_e io, const struct io_config *config);
 void io_set_select(io_e io, io_select_e select);
 void io_set_direction(io_e io, io_dir_e direction);
 void io_set_resistor(io_e io, io_resistor_e resistor);
