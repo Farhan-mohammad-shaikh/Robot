@@ -1,5 +1,26 @@
 #include "io.h"
 #include "defines.h"
+#include <stdint.h>
+
+
+#define IO_PORT_OFFSET (3u)
+#define IO_PORT_MASK (0x3u << IO_PORT_OFFSET)
+#define IO_PIN_MASK (0x7u)
+
+ uint8_t io_port(io_e io)
+{
+    return (io & IO_PORT_MASK) >> IO_PORT_OFFSET;
+}
+
+ inline uint8_t io_pin_idx(io_e io)
+{
+    return io & IO_PIN_MASK;
+}
+
+ uint8_t io_pin_bit(io_e io)
+{
+    return 1 << io_pin_idx(io);
+}
 
 
 void io_set_select(io_e io, io_select_e select)
