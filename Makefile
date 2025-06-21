@@ -19,13 +19,15 @@ MSP_LINK_DIRECTORY    := $(MSP_INCLUDE_DIRECTORY)
 CC       := $(MSP_BIN_DIRECTORY)/msp430-elf-gcc
 RM       := rm -rf
 CPPCHECK := cppcheck
+HW_DEFINE = $(addprefix -D,$(HW))
+DEFINES   = $(HW_DEFINE)
 
 # MCU and Flags
 MCU    := msp430g2553
 WFLAGS := -Wall -Wextra -Werror -Wshadow
 INCLUDE_DIRS := $(MSP_INCLUDE_DIRECTORY) $(COMMON_DIR) $(APP_DIR) $(DRIVERS_DIR)
-CFLAGS := -mmcu=$(MCU) $(WFLAGS) -Og -g $(addprefix -I,$(INCLUDE_DIRS))
-LFLAGS := -mmcu=$(MCU) $(addprefix -L,$(MSP_LINK_DIRECTORY))
+CFLAGS := -mmcu=$(MCU) $(WFLAGS) $(DEFINES) -Og -g $(addprefix -I,$(INCLUDE_DIRS))
+LFLAGS := -mmcu=$(MCU) $(addprefix -L,$(MSP_LINK_DIRECTORY)) $(DEFINES)
 
 # Source files
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c) \

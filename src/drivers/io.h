@@ -1,7 +1,7 @@
 #ifndef IO_H
 #define IO_H
-#define LAUNCHPAD
-#define NSUMO
+//#define LAUNCHPAD
+//#define NSUMO
 
 typedef enum {
     IO_10, IO_11, IO_12, IO_13, IO_14, IO_15, IO_16, IO_17,
